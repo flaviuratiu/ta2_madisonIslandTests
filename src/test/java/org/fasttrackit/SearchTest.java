@@ -20,10 +20,12 @@ public class SearchTest {
                 "src\\test\\resources\\drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://fasttrackit.org/selenium-test");
+        System.out.println("Opened homepage");
 
         String keyword = "vase";
         driver.findElement(By.className("input-text")).
                 sendKeys(keyword + Keys.ENTER);
+        System.out.println("Pressed enter in search field.");
 
         List<WebElement> productNameContainers =
                 driver.findElements(By.cssSelector(".product-name > a"));

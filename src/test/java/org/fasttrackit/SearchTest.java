@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class SearchTest {
@@ -26,6 +27,10 @@ public class SearchTest {
 
         String keyword = "vase";
         header.search(keyword);
+
+        String searchFieldValue = header.getSearchField().getAttribute("value");
+        assertThat("Searched keyword not preserved in search field",
+                searchFieldValue, is(keyword));
 
         ProductsGrid productsGrid =
                 PageFactory.initElements(driver, ProductsGrid.class);

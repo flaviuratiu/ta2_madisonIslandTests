@@ -17,9 +17,9 @@ public class SearchTest {
     @Test
     public void searchByOneKeywordTest() {
         System.setProperty("webdriver.chrome.driver",
-                "src\\test\\resources\\drivers\\chromedriver.exe");
+                AppConfig.getChromeDriverPath());
         WebDriver driver = new ChromeDriver();
-        driver.get("https://fasttrackit.org/selenium-test");
+        driver.get(AppConfig.getSiteUrl());
         System.out.println("Opened homepage");
 
         String keyword = "vase";

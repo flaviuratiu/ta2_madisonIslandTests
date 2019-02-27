@@ -3,25 +3,17 @@ package org.fasttrackit;
 import org.fasttrackit.pageobjects.Header;
 import org.fasttrackit.pageobjects.ProductsGrid;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class SearchTest {
+public class SearchTest extends TestBase {
 
     @Test
     public void searchByOneKeywordTest() {
-        System.setProperty("webdriver.chrome.driver",
-                AppConfig.getChromeDriverPath());
-        WebDriver driver = new ChromeDriver();
-        driver.get(AppConfig.getSiteUrl());
-        System.out.println("Opened homepage");
-
         Header header =
                 PageFactory.initElements(driver, Header.class);
 

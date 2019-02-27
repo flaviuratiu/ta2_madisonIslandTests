@@ -20,6 +20,8 @@ public class SearchTest extends TestBase {
         String keyword = "vase";
         header.search(keyword);
 
+        waitForPageToLoad(4000);
+
         String searchFieldValue = header.getSearchField().getAttribute("value");
         assertThat("Searched keyword not preserved in search field",
                 searchFieldValue, is(keyword));

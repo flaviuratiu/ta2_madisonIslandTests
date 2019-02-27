@@ -5,6 +5,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class DriverManager {
 
     private static WebDriver driver;
@@ -30,6 +32,13 @@ public class DriverManager {
                 driver = new InternetExplorerDriver();
                 break;
         }
+
+        // move the hardcoded timeout value to properties files
+        driver.manage().timeouts().implicitlyWait(AppConfig.getTimeout(), TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(AppConfig.getTimeout(), TimeUnit.SECONDS);
+        driver.manage().timeouts().setScriptTimeout(AppConfig.getTimeout(), TimeUnit.SECONDS);
+
+        driver.manage().window().maximize();
 
         return driver;
     }
